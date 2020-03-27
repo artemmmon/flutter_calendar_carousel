@@ -119,7 +119,7 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
   final TextStyle inactiveDaysTextStyle;
   final TextStyle inactiveWeekendTextStyle;
   final bool headerTitleTouchable;
-  final Function onHeaderTitlePressed;
+  final void Function() onHeaderTitlePressed;
   final WeekdayFormat weekDayFormat;
   final bool staticSixWeekFormat;
   final bool isScrollable;
@@ -542,7 +542,7 @@ class _CalendarState<T extends EventInterface> extends State<CalendarCarousel<T>
         double value = 1.0;
         if (_controller.position.haveDimensions) {
           value = _controller.page - slideIndex;
-          value = (1 - (value.abs() * .5)).clamp(0.0, 1.0);
+          value = (1 - (value.abs() * .5)).clamp(0.0, 1.0) as double;
         }
 
         return Center(
@@ -645,7 +645,7 @@ class _CalendarState<T extends EventInterface> extends State<CalendarCarousel<T>
           double value = 1.0;
           if (_controller.position.haveDimensions) {
             value = _controller.page - slideIndex;
-            value = (1 - (value.abs() * .5)).clamp(0.0, 1.0);
+            value = (1.0 - (value.abs() * .5)).clamp(0.0, 1.0) as double;
           }
 
           return Center(
